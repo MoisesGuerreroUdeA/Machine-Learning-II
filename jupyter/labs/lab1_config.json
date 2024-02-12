@@ -1,0 +1,6 @@
+{
+    "personal_photo_input_path": "personal_photo/Moises_Guerrero.jpeg",
+    "personal_photo_output_path": "cohort_photos/Moises_Guerrero.jpg",
+    "cohort_photos_dir": "cohort_photos/",
+    "average_face_output_path": "average_face.jpeg"
+}
