@@ -1,7 +1,7 @@
 import numpy as np
 
 class SVD:
-    def __init__(self, nsing_vals):
+    def __init__(self, nsing_vals:int=-1):
         self.nsing_vals = nsing_vals
         self.U = None
         self.Sigma = None
@@ -37,7 +37,10 @@ class SVD:
     
     def transform(self):
         # Recovering matrix A with nsing_vals
-        A_transformed = self.U[:, :self.nsing_vals] @ np.diag(self.Sigma[:self.nsing_vals]) @ self.V_T[:self.nsing_vals, :]
+        if self.nsing_vals != -1:
+            A_transformed = self.U[:, :self.nsing_vals] @ np.diag(self.Sigma[:self.nsing_vals]) @ self.V_T[:self.nsing_vals, :]
+        else:
+            A_transformed = self.U @ np.diag(self.Sigma) @ self.V_T
         return A_transformed
     
     def fit_transform(self, A):
