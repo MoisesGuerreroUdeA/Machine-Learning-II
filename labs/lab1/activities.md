@@ -1,0 +1,27 @@
+# Activities
+- [X] Matrix simulation A
+  - [X] Trace of A
+  - [X] Determinant of A
+  - [X] Matrix A inversion
+  - [X] Relation between AA' and A'A
+  - [ ] Read paper
+- [X] Well centered picture of my face
+  - [X] Edit picture to 256x256 grayscale
+  - [X] Plot of my edited photo
+  - [X] Average face of the cohort
+  - [X] How distant is my face from the average
+- [X] Unsupervised python package
+  - [X] fit(), fit_transform(), transform()
+  - [X] Dependencies with pipenv
+  - [X] SVD implementation
+  - [X] PCA implementation
+  - [ ] t-SNE Implementation
+- [X] Apply SVD over the picture of my face increasing the number of singular values.
+- [X] Naive logistic regression on raw MNIST images 
+- [X] Dimensionality reduction of MNIST images with 2 features per image
+  - [X] Plot of the 2 new features
+  - [ ] Impact in the performance
+- [X] Strategies for Robust PCA
+- [X]  Mathematics of UMAP
+- [ ]  Mathematics of LDA
+- [ ]  HTTP MNIST server
