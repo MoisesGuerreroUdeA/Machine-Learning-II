@@ -10,10 +10,11 @@ from sklearn.linear_model import LogisticRegression
 
 app = Flask(__name__)
 
-@app.route("/", methods=['POST'])
+@app.route("/")
 def LogisticRegression():
+    """
+    Genera los datos de entrenamiento y validación del dataset MNIST
+    """
     digits = load_digits()
     digits_df = pd.DataFrame(digits['data'])
     digits_df['target'] = digits['target']
-    digits_html = digits_df.to_html()
-    return digits_html
