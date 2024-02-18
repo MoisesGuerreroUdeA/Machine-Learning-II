@@ -1,4 +1,6 @@
 labs/lab1/imgs/cohort/
 labs/lab1/Lab1-DimRed.pdf
+labs/lab1/unsupervised/dim_red/temp_*.py
+labs/lab1/unsupervised/dim_red/test_*.py
 __pycache__/
 labs/lab2/Lab2 Clustering.pdf
