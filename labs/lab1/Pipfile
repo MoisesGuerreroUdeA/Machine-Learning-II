@@ -7,6 +7,10 @@ name = "pypi"
 numpy = "*"
 matplotlib = "*"
 scikit-image = "*"
+flask = "*"
+pandas = "*"
+seaborn = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

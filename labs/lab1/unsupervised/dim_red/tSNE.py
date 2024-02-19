@@ -9,9 +9,12 @@ class tSNE:
         self.learning_rate = learning_rate
         self.momentum = momentum
         self.perplexity = perplexity
+    
     def fit(self, X):
         # Initialize out 2D representation
         Y = self.rng.normal(0., 0.0001, [X.shape[0], 2])
+        print("Initial Y:")
+        print(Y)
 
         # Initialize past values (used for momentum)
         if self.momentum:
@@ -20,14 +23,22 @@ class tSNE:
 
         # Obtain matrix of joint probabilities p_ij
         self.P = self._p_joint(X, self.perplexity)
+        print("Joint Probabilities Matrix (P):")
+        print(self.P)
 
         # Start gradient descent loop
         for i in range(self.num_iters):
             print(f"Iteration >> {i}")
             # Get Q and distances (distances only used for t-SNE)
             Q, distances = self._q_tsne(Y)
+            print("Matrix Q:")
+            print(Q)
+            print("Distances:")
+            print(distances)
             # Estimate gradients with respect to Y
             grads = self._tsne_grad(self.P, Q, Y, distances)
+            print("Gradients:")
+            print(grads)
 
             # Update Y
             Y = Y - self.learning_rate * grads
@@ -38,6 +49,8 @@ class tSNE:
                 Y_m1 = Y.copy()
         
         self.Y_out = Y
+        print("Final Y:")
+        print(self.Y_out)
     
     def fit_transform(self, X):
         self.fit(X)
@@ -96,27 +109,13 @@ class tSNE:
         P = self._p_conditional_to_joint(p_conditional)
         return P
     
-    def _neg_squared_euc_dists(self, X):
-        """Compute matrix containing negative squared euclidean
-        distance for all pairs of points in input matrix X
-
-        # Arguments:
-            X: matrix of size NxD
-        # Returns:
-            NxN matrix D, with entry D_ij = negative squared
-            euclidean distance between rows X_i and X_j
-        """
-        # Math? See https://stackoverflow.com/questions/37009647
-        sum_X = np.sum(np.square(X), 1)
-        D = np.add(np.add(-2 * np.dot(X, X.T), sum_X).T, sum_X)
-        return -D
-    
     def _find_optimal_sigmas(self, distances, target_perplexity):
         """For each row of distances matrix, find sigma that results
         in target perplexity for that role."""
         sigmas = []
         # For each row of the matrix (each point in our dataset)
         for i in range(distances.shape[0]):
+            print(f"Finding optimal sigma for row {i+1}")
             # Make fn that returns perplexity of this row given sigma
             eval_fn = lambda sigma: \
                 self._perplexity(distances[i:i+1, :], np.array(sigma), i)
@@ -162,6 +161,7 @@ class tSNE:
         for i in range(max_iter):
             guess = (lower + upper) / 2.
             val = eval_fn(guess)
+            # print(f"Iteration {i+1}: guess={guess}, value={val}")
             if val > target:
                 upper = guess
             else:
