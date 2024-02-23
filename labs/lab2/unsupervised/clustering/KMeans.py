@@ -14,6 +14,7 @@ class KMeans:
         # Initialize centroids randomly
         idx = np.random.choice(n_samples, self.n_clusters, replace=False)
         self.centroids = X[idx]
+        # print(f"Random initial centroids:\n{self.centroids}")
         
         for i in range(self.max_iters):
             # Assign each data point to the nearest centroid
@@ -27,6 +28,8 @@ class KMeans:
                 
             # Check for convergence
             if np.sum(np.abs(new_centroids - self.centroids)) < self.tol:
+                # print(f"Number of iterations: {i}")
+                # print(f"Final centroids: \n{self.centroids}")
                 break
                 
             self.centroids = new_centroids

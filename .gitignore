@@ -4,3 +4,6 @@ labs/lab1/unsupervised/dim_red/temp_*.py
 labs/lab1/unsupervised/dim_red/test_*.py
 __pycache__/
 labs/lab2/Lab2 Clustering.pdf
+labs/lab2/unsupervised/clustering/temp_*.py
+labs/lab2/unsupervised/clustering/test_*.py
+labs/lab2/unsupervised/clustering/temp_*.ipynb
